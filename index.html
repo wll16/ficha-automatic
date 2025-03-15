@@ -14,13 +14,38 @@
             align-items: center;
             padding-top: 50px;
         }
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #333;
+            border-radius: 5px;
+            color: white;
+        }
+        .tab:hover {
+            background-color: #444;
+        }
+        .tab-content {
+            display: none;
+            width: 80%;
+        }
+        .tab-content.active {
+            display: block;
+        }
         .atributo {
             margin: 10px;
             padding: 10px;
-            background-color: #333;
+            background-color: #444;
             border-radius: 5px;
             cursor: pointer;
             display: inline-block;
+            width: 45%;
+            margin-bottom: 10px;
+            text-align: center;
         }
         .atributo input {
             display: none;
@@ -48,7 +73,12 @@
 </head>
 <body>
 
-    <div id="atributos">
+    <div class="tab-container">
+        <div class="tab" onclick="switchTab('fisicos')">Atributos Físicos</div>
+        <div class="tab" onclick="switchTab('mentais')">Atributos Mentais</div>
+    </div>
+
+    <div id="fisicos" class="tab-content">
         <div class="atributo" id="forca" onclick="rodarDado('forca')">
             <span>Força</span>
             <input type="number" value="0" id="input-forca">
@@ -65,26 +95,7 @@
             <span>Vigor</span>
             <input type="number" value="0" id="input-vigor">
         </div>
-        <div class="atributo" id="inteligencia" onclick="rodarDado('inteligencia')">
-            <span>Inteligência</span>
-            <input type="number" value="0" id="input-inteligencia">
-        </div>
-        <div class="atributo" id="carisma" onclick="rodarDado('carisma')">
-            <span>Carisma</span>
-            <input type="number" value="0" id="input-carisma">
-        </div>
-        <div class="atributo" id="resistencia_mental" onclick="rodarDado('resistencia_mental')">
-            <span>Resistência Mental</span>
-            <input type="number" value="0" id="input-resistencia_mental">
-        </div>
-        <div class="atributo" id="sentidos" onclick="rodarDado('sentidos')">
-            <span>Sentidos</span>
-            <input type="number" value="0" id="input-sentidos">
-        </div>
     </div>
 
-    <button class="botao" onclick="toggleEditar()">Editar</button>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    <div id="mentais" class="tab-content">
+        <div class="atributo" id="inteligencia" 
