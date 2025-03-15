@@ -1,12 +1,21 @@
 function calcular() {
-    let valor = document.getElementById("atributo").value;
+    let atributos = [
+        "forca", "resistencia", "agilidade", "vigor", 
+        "inteligencia", "carisma", "resistenciaMental", "sentidos"
+    ];
     
-    if (valor < 0 || valor > 3) {
-        document.getElementById("resultado").innerText = "O valor precisa estar entre 0 e 3!";
-        return;
+    let mensagem = "Resultados:\n";
+
+    for (let atributo of atributos) {
+        let valor = document.getElementById(atributo).value;
+
+        if (valor < 0 || valor > 3) {
+            document.getElementById("resultado").innerText = "Os valores precisam estar entre 0 e 3!";
+            return;
+        }
+
+        mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${valor} dado(s)\n`;
     }
 
-    let dados = valor; // Se for 1, rola 1d20; se for 2, pega o melhor de 2d20, etc.
-    
-    document.getElementById("resultado").innerText = `Você tem ${dados} dado(s) para rolar!`;
+    document.getElementById("resultado").innerText = mensagem;
 }
