@@ -17,6 +17,15 @@ function toggleEditar() {
     }
 }
 
+// Função para trocar de aba
+function switchTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    const selectedTab = document.getElementById(tabName);
+    selectedTab.classList.add('active');
+}
+
 // Função para rodar o dado
 function rodarDado(atributo) {
     const valorAtributo = document.getElementById('input-' + atributo).value;
