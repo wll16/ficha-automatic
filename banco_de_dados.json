@@ -1,0 +1,22 @@
+{
+  "Pablo": {
+    "forca": 4,
+    "resistencia": 3,
+    "agilidade": 5,
+    "vigor": 6,
+    "inteligencia": 8,
+    "carisma": 7,
+    "resistencia_mental": 4,
+    "sentidos": 5
+  },
+  "Maria": {
+    "forca": 3,
+    "resistencia": 4,
+    "agilidade": 6,
+    "vigor": 5,
+    "inteligencia": 7,
+    "carisma": 8,
+    "resistencia_mental": 6,
+    "sentidos": 4
+  }
+}
