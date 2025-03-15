@@ -19,20 +19,31 @@ function calcular() {
         }
 
         let rolagens = [];
-        
-        // Se o valor do atributo for 0, rola 2d20 e pega o pior
+        let resultadoFinal;
+
         if (valor === 0) {
-            rolagens.push(rolarDado(), rolarDado());
-            resultadoFinal = Math.min(...rolagens);
-            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (Pior de 2)\n`;
-        } 
-        // Se for 1 ou mais, rola Xd20 e pega o melhor
-        else {
-            for (let i = 0; i < valor; i++) {
-                rolagens.push(rolarDado());
+            rolagens.push(rolarDado(), rolarDado()); // Rola 2 dados
+            resultadoFinal = Math.min(...rolagens); // Pega o pior
+            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (2d20 - Pior)\n`;
+        } else if (valor === 1) {
+            rolagens.push(rolarDado()); // Rola 1 dado
+            resultadoFinal = rolagens[0]; // Só tem 1 dado
+            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (1d20)\n`;
+        } else if (valor === 2) {
+            rolagens.push(rolarDado(), rolarDado()); // Rola 2 dados
+            resultadoFinal = Math.max(...rolagens); // Pega o melhor
+            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (2d20 - Melhor)\n`;
+        } else if (valor === 3) {
+            rolagens.push(rolarDado(), rolarDado(), rolarDado()); // Rola 3 dados
+            resultadoFinal = Math.max(...rolagens); // Pega o melhor
+            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (3d20 - Melhor)\n`;
+        } else {
+            let rolagemQtd = valor;
+            for (let i = 0; i < rolagemQtd; i++) {
+                rolagens.push(rolarDado()); // Rola a quantidade de dados
             }
-            resultadoFinal = Math.max(...rolagens);
-            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (Melhor de ${valor})\n`;
+            resultadoFinal = Math.max(...rolagens); // Pega o melhor
+            mensagem += `${atributo.charAt(0).toUpperCase() + atributo.slice(1)}: ${rolagens} → ${resultadoFinal} (${rolagemQtd}d20 - Melhor)\n`;
         }
     }
 
